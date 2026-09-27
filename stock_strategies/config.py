@@ -24,15 +24,16 @@ MIN_PRICE_ROWS = 60               # 少於此列數視為新股／資料不足
 FUTURES_ID = "TX"
 
 CONFIG = {
-    "eps_threshold": 5.0,
-    "roe_threshold": 15.0,
+    "eps_threshold": 2.0,
+    "roe_threshold": 12.0,
     "backtest_years": 3,
     "hold_days": 20,
-    "target_return": 0.10,
-    "stop_loss": 0.08,
+    "target_return": 0.12,
+    "stop_loss": 0.06,
     "min_tech_score_for_signal": 60,
     "min_total_score_for_buy": 65,
     # 夜盤開盤方向分類門檻（漲跌幅 %）
     "night_gap_big": 1.5,    # |漲跌幅| ≥ 1.5% → 大漲 / 大跌
     "night_gap_small": 0.5,  # 0.5 ~ 1.5% → 小漲 / 小跌；< 0.5% → 平盤
+
 }
