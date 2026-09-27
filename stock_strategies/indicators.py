@@ -33,6 +33,12 @@ def add_indicators(df: pd.DataFrame) -> pd.DataFrame:
     ], axis=1).max(axis=1)
     df["atr"] = tr.rolling(14).mean()
 
+# --- 新增 RSI 計算 ---
+    delta = df["close"].diff()
+    gain = delta.where(delta > 0, 0).rolling(14).mean()
+    loss = (-delta.where(delta < 0, 0)).rolling(14).mean()
+    df["rsi"] = 100 - (100 / (1 + gain / loss))
+    
     return df
 
 
@@ -84,4 +90,9 @@ def tech_score_at(row: pd.Series, params: dict | None = None) -> dict:
         elif row["macd_hist"] > 0:
             score += max_per * 0.4
 
+# --- 新增 RSI 評分條件 ---
+    if pd.notna(row.get("rsi")) and 30 < row["rsi"] < 70:
+        score += 20
+        signals.append("RSI 中性區")
+    
     return {"score": int(round(score)), "signals": signals}
