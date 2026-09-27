@@ -77,7 +77,7 @@ def _explain_why(s: dict) -> str:
     c = s.get("components", {})
     reasons = []
     if not c.get("fundamental_pass"):
-        reasons.append("基本面未達標(EPS>5,ROE>15)")
+        reasons.append("基本面未達標(EPS>2,ROE>12)")
     if c.get("tech_score", 0) < 50:
         reasons.append(f"技術分僅{c.get('tech_score', 0)}(<50)")
     if s.get("signal_score", 0) < 65:
