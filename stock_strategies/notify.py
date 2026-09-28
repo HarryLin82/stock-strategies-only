@@ -214,8 +214,8 @@ def format_messages(
         msg2.append("")
 
     if watches:
-        top_watches = watches[:8]
-        rest_watches = watches[8:]
+        top_watches = watches[:3]
+        rest_watches = watches[3:]
         msg2.append(f"🟡 *WATCH — 接近訊號 TOP {len(top_watches)}*")
         msg2.append("")
         for s in top_watches:
